@@ -17,6 +17,8 @@ class HomeController extends AbstractController
     private $homeService;
     private $paginator;
 
+
+    
     public function __construct(
         PaginatorInterface $paginator,
         HomeService $homeService)

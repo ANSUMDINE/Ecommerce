@@ -35,13 +35,12 @@ class HomeService
     public function getArticles(Request $request): array
     {
         $month = $this->getMonth();
-        dd($month);
         $search = $request->query->get('search');
         
         if($search) {
-            return $this->articleRepository->getArticles($search);
+            return $this->articlesSerializer($this->articleRepository->getArticles($search));
         } else {
-            return $this->articleRepository->findAll();
+            return $this->articlesSerializer($this->articleRepository->findAll());
         }
     }
 }

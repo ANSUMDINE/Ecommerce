@@ -21,4 +21,19 @@ trait ArticleTrait
             12 => 'Décembre'
         ];
     }
+
+    public function articlesSerializer($articles): array
+    {
+        $articlesSerializes = [];
+        foreach($articles as $article){
+            $articlesSerializes[] = [
+                'id' => $article->getId(),
+                'name' => $article->getName(),
+                'description' => $article->getDescription(),
+                'comment' => $article->getComment(),
+                'created_at' => $article->getCreatedAt()
+            ];
+        }
+        return $articlesSerializes;
+    } 
 }

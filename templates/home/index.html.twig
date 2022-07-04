@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %} {% block title %}Hello HomeController!{% endblock %} {% block body %}
+{% extends 'base.html.twig' %} {% block title %}Hello HomeController!{% endblock %} {% block body %} {% set array = ['salut', 1, true] %} {% set object = {'value': 2} %}
 <a href="{{ path('create_article') }}">Créer un article</a>
 <nav class="navbar navbar-light bg-light">
     <form method="get" action="{{ " app_home " }}" class="form-inline">
@@ -6,10 +6,11 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>
+<div data-array="{{array|json_encode}}" data-object="{{object|json_encode}}" data-articles="{{articles|json_encode}}" class="div"></div>
 {% for article in articles %}
-<h1>{{article.name}}</h1>
-<h4>{{article.createdAt|format_datetime()}}</h4>
+<h1>{{article['name']}}</h1>
+<h4>{{article['created_at']|format_datetime()}}</h4>
 {% endfor %} {#
 <div class="paginer">
     {{ knp_pagination_render(articles) }}
-</div> #} {% endblock %}
+</div> #}{{ encore_entry_script_tags('home') }} {% endblock %}

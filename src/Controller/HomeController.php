@@ -27,7 +27,7 @@ class HomeController extends AbstractController
         $this->paginator = $paginator;
     }
 
-       // Ansumdine
+    
     #[Route('/app_home', name: 'app_home')]
     public function index(Request $request): Response
     {
